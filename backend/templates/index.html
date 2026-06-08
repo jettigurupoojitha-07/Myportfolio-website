@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poojitha Portfolio</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <h1>Poojitha J</h1>
+    <h2>Python Developer</h2>
+    <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile Photo" class="profile-pic">
+
+    <section id="about">
+        <h2>About Me</h2>
+
+        <p>
+            I am learning Full Stack Development and building projects
+            using Python, HTML, CSS, JavaScript, and Flask.
+        </p>
+        <a href="{{ url_for('static', filename='files/resume.pdf') }}" download>
+           Download Resume
+        </a>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>Python</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Flask</li>
+        </ul>
+    </section>
+
+   <section id="projects">
+        <h2>Projects</h2>
+
+        {% for project in projects %}
+        <div class="project-card">
+            <h3>{{ project[0] }}</h3>
+            <p>{{ project[1] }}</p>
+        </div>    
+        {% endfor %}
+    
+</section>
+
+ <section id="contact">
+    <h2>Contact Me</h2>
+
+       <p>
+            Email:
+            <a href="mailto:jettiguru@karunya.edu.in">
+                jettiguru@karunya.edu.in
+            </a>
+        </p>
+    
+
+    <p>
+        LinkedIn:
+        <a href="https://www.linkedin.com/in/guru-poojitha-jetti-798a0832b/" target="_blank">
+            Visit LinkedIn
+        </a>
+    </p>
+
+    <p>
+        GitHub:
+        <a href="https://github.com/jettigurupoojitha-07" target="_blank">
+            Visit GitHub
+        </a>
+    </p>
+    <hr>
+
+    <form method="POST">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+        <br><br>
+
+        <input type="email" name="email" placeholder="Your Email" required>
+        <br><br>
+
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <br><br>
+
+        <button type="submit">Send</button>
+
+    </form>
+</section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
